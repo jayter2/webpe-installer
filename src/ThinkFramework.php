@@ -8,8 +8,7 @@ use Composer\Repository\InstalledRepositoryInterface;
 
 class ThinkFramework extends LibraryInstaller
 {
-    public function install(InstalledRepositoryInterface $repo, PackageInterface $package)
-    {
+    public function install(InstalledRepositoryInterface $repo, PackageInterface $package) {
         parent::install($repo, $package);
         if ($this->composer->getPackage()->getType() == 'project' && $package->getInstallationSource() != 'source') {
             //remove tests dir
@@ -20,8 +19,10 @@ class ThinkFramework extends LibraryInstaller
     /**
      * {@inheritDoc}
      */
-    public function getInstallPath(PackageInterface $package)
-    {
+    public function getInstallPath(PackageInterface $package) {
+        if ('webpe/core' === $package->getPrettyName()) {
+            return 'webpe';
+        }
         if ('webpe/think' !== $package->getPrettyName()) {
             throw new \InvalidArgumentException('Unable to install this library!');
         }
@@ -40,8 +41,7 @@ class ThinkFramework extends LibraryInstaller
         return 'thinkphp';
     }
 
-    public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
-    {
+    public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target) {
         parent::update($repo, $initial, $target);
         if ($this->composer->getPackage()->getType() == 'project' && $target->getInstallationSource() != 'source') {
             //remove tests dir
@@ -52,8 +52,7 @@ class ThinkFramework extends LibraryInstaller
     /**
      * {@inheritDoc}
      */
-    public function supports($packageType)
-    {
+    public function supports($packageType) {
         return 'think-framework' === $packageType;
     }
 }
