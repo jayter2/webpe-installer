@@ -39,7 +39,7 @@ class ThinkExtend extends LibraryInstaller
 
             if (!empty($extra['think-config'])) {
 
-                $configDir = 'webpe'.DIRECTORY_SEPARATOR.'config';
+                $configDir = 'data'.DIRECTORY_SEPARATOR.'config';
 
                 $this->filesystem->ensureDirectoryExists($configDir);
 
