@@ -1,5 +1,6 @@
 {
     "name": "webpe/installer",
+    "description":"Composer installer for Webpe and thinkphp5 and above",
     "type": "composer-plugin",
     "license": "Apache-2.0",
     "authors": [
