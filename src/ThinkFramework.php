@@ -20,10 +20,10 @@ class ThinkFramework extends LibraryInstaller
      * {@inheritDoc}
      */
     public function getInstallPath(PackageInterface $package) {
-        if ('webpe/core' === $package->getPrettyName()) {
+        if (substr($package->getPrettyName(),0,10) === 'webpe/core') {
             return 'webpe';
         }
-        if ('webpe/think' !== $package->getPrettyName()) {
+        if (substr($package->getPrettyName(),0,11) !== 'webpe/think') {
             throw new \InvalidArgumentException('Unable to install this library!');
         }
 
